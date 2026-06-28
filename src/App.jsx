@@ -3,6 +3,7 @@ import { useFishingData } from './useFishingData'
 import CatchesView from './components/CatchesView'
 import SpotsView from './components/SpotsView'
 import MapView from './components/MapView'
+import TimelineView from './components/TimelineView'
 import './App.css'
 
 const TABS = [
@@ -96,7 +97,7 @@ function App() {
       {!data.loading && activeTab === 'catches' && <CatchesView data={data} />}
       {!data.loading && activeTab === 'list' && <SpotsView data={data} />}
       {!data.loading && activeTab === 'map' && <MapView data={data} />}
-      {!data.loading && activeTab === 'timeline' && <p className="muted">Timeline tab — coming next.</p>}
+      {!data.loading && activeTab === 'timeline' && <TimelineView data={data} />}
       {!data.loading && activeTab === 'stats' && <p className="muted">Stats tab — coming next.</p>}
       {!data.loading && activeTab === 'guide' && <p className="muted">Guide tab — coming next.</p>}
       {!data.loading && activeTab === 'add' && <p className="muted">Add tab — coming next.</p>}
