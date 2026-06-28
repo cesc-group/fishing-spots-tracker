@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useFishingData } from './useFishingData'
 import CatchesView from './components/CatchesView'
+import SpotsView from './components/SpotsView'
 import './App.css'
 
 const TABS = [
@@ -92,7 +93,7 @@ function App() {
       {data.error && <p className="tiny" style={{ color: 'var(--red)' }}>Error: {data.error}</p>}
 
       {!data.loading && activeTab === 'catches' && <CatchesView data={data} />}
-      {!data.loading && activeTab === 'list' && <p className="muted">Spots tab — coming next.</p>}
+      {!data.loading && activeTab === 'list' && <SpotsView data={data} />}
       {!data.loading && activeTab === 'map' && <p className="muted">Map tab — coming next.</p>}
       {!data.loading && activeTab === 'timeline' && <p className="muted">Timeline tab — coming next.</p>}
       {!data.loading && activeTab === 'stats' && <p className="muted">Stats tab — coming next.</p>}
