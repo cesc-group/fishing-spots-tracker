@@ -1,0 +1,22 @@
+{
+  "name": "Family Fishing Spots",
+  "short_name": "Fishing",
+  "description": "Shared fishing spot tracker, synced live across every device.",
+  "start_url": "/fishing-spots-tracker/",
+  "scope": "/fishing-spots-tracker/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
