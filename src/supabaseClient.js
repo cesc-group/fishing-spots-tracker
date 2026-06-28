@@ -1,198 +1,106 @@
-.app {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 1.5rem 1rem 3rem;
+export const SPECIES_LIST = [
+  'Snook', 'Tarpon', 'Redfish', 'Spotted seatrout', 'Mangrove snapper', 'Jack crevalle',
+  'Largemouth bass', 'Peacock bass', 'Bluegill', 'Snakehead', 'Tilapia', 'Carp',
+  'Sunshine bass', 'Black crappie', 'Channel catfish', 'Gar', 'Mayan cichlid', 'Oscar',
+]
+
+export const LURE_LIST = [
+  'Live shrimp', 'Live pinfish', 'Live crab', 'Live threadfin', 'Live shiner',
+  'Topwater frog', 'Soft swimbait', 'Jerkbait', 'Jig', 'Spinnerbait',
+  'Texas-rigged worm', 'Twitchbait (MirrOlure)', 'Small jig under bobber',
+  'Cricket', 'Bread ball', 'Corn', 'Dough bait', 'Cut bait', 'Popping cork rig',
+]
+
+export const KNOWN_ANGLERS = ['Pap\u00e1', 'Domingo', 'Renato', 'Mam\u00e1']
+
+const SALT_SPECIES = ['snook', 'tarpon', 'redfish', 'seatrout', 'snapper', 'jack crevalle']
+
+export function isSaltSpecies(name) {
+  const n = (name || '').toLowerCase()
+  return SALT_SPECIES.some((k) => n.indexOf(k) !== -1)
 }
 
-h1.app-title {
-  font-size: 22px;
-  font-weight: 600;
-  margin: 0 0 1.2rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  letter-spacing: -0.02em;
-}
-h1.app-title .accent { color: var(--lime); font-style: italic; font-weight: 600; }
-h1.app-title svg { color: var(--lime); }
-
-.label {
-  font-family: var(--font);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-}
-
-.top-panel {
-  background: var(--bg-panel);
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius-lg);
-  padding: 1.1rem 1.25rem;
-  margin-bottom: 1.2rem;
+export const FWC_LINKS = {
+  snook: { url: 'https://myfwc.com/fishing/saltwater/recreational/snook/', label: 'FWC snook regs' },
+  tarpon: { url: 'https://myfwc.com/fishing/saltwater/recreational/tarpon/', label: 'FWC tarpon regs' },
+  redfish: { url: 'https://myfwc.com/fishing/saltwater/recreational/', label: 'FWC saltwater regs (redfish)' },
+  seatrout: { url: 'https://myfwc.com/fishing/saltwater/recreational/', label: 'FWC saltwater regs (seatrout)' },
+  snapper: { url: 'https://myfwc.com/fishing/saltwater/recreational/', label: 'FWC saltwater regs (snapper)' },
+  'jack crevalle': { url: 'https://myfwc.com/fishing/saltwater/recreational/', label: 'FWC saltwater regs' },
+  bass: { url: 'https://myfwc.com/fishing/freshwater/regulations/', label: 'FWC freshwater regs' },
+  'peacock bass': { url: 'https://myfwc.com/fishing/freshwater/regulations/', label: 'FWC freshwater regs' },
+  bluegill: { url: 'https://myfwc.com/fishing/freshwater/regulations/', label: 'FWC freshwater regs' },
+  tilapia: { url: 'https://myfwc.com/fishing/freshwater/regulations/', label: 'FWC freshwater regs' },
+  carp: { url: 'https://myfwc.com/fishing/freshwater/regulations/', label: 'FWC freshwater regs' },
+  crappie: { url: 'https://myfwc.com/fishing/freshwater/regulations/', label: 'FWC freshwater regs' },
+  catfish: { url: 'https://myfwc.com/fishing/freshwater/regulations/', label: 'FWC freshwater regs' },
+  gar: { url: 'https://myfwc.com/fishing/freshwater/regulations/', label: 'FWC freshwater regs' },
+  cichlid: { url: 'https://myfwc.com/fishing/freshwater/regulations/', label: 'FWC freshwater regs (invasive species)' },
+  oscar: { url: 'https://myfwc.com/fishing/freshwater/regulations/', label: 'FWC freshwater regs (invasive species)' },
+  snakehead: { url: 'https://myfwc.com/fishing/freshwater/regulations/', label: 'FWC freshwater regs (invasive species, no limit)' },
 }
 
-.tabs {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 1.2rem;
-  overflow-x: auto;
-  padding: 5px;
-  background: var(--bg-panel);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-soft);
-}
-.tabbtn {
-  flex: 1;
-  min-width: 64px;
-  border: none;
-  border-radius: var(--radius-md);
-  background: transparent;
-  padding: 8px 2px;
-  font-family: var(--font);
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-weight: 600;
-  cursor: pointer;
-  color: var(--text-secondary);
-  transition: background 0.15s, color 0.15s;
-}
-.tabbtn svg { display: block; margin: 0 auto 3px; width: 18px; height: 18px; }
-.tabbtn:hover { color: var(--text-primary); }
-.tabbtn.active { background: var(--lime); color: var(--lime-text); }
-
-input:not([type="checkbox"]), select, textarea {
-  font-size: 14px;
-  padding: 9px 11px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--bg-card);
-  color: var(--text-primary);
-  width: 100%;
-}
-input::placeholder, textarea::placeholder { color: var(--text-tertiary); }
-input:focus, select:focus, textarea:focus {
-  outline: none;
-  border-color: var(--lime);
-  box-shadow: 0 0 0 2px var(--lime-dim);
-}
-input[type="checkbox"] {
-  width: 15px;
-  height: 15px;
-  accent-color: var(--lime);
-  flex-shrink: 0;
+export function regForSpecies(name) {
+  const key = (name || '').toLowerCase().trim()
+  for (const k of Object.keys(FWC_LINKS)) {
+    if (key.indexOf(k) !== -1) return FWC_LINKS[k]
+  }
+  return null
 }
 
-button {
-  font-size: 13px;
-  padding: 8px 14px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--bg-card);
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: background 0.15s, transform 0.05s, border-color 0.15s;
-}
-button:hover { background: var(--bg-card-hover); border-color: var(--text-tertiary); }
-button:active { transform: scale(0.98); }
-.btn-primary {
-  background: var(--lime) !important;
-  color: var(--lime-text) !important;
-  border-color: var(--lime) !important;
-  font-weight: 700;
-}
-.btn-primary:hover { background: #c4e23c !important; }
+export const BAIT_GUIDE = [
+  { species: 'snook', lures: 'Live pinfish or shrimp on a jighead; swimbaits and twitchbaits (e.g. MirrOlure) around structure and mangrove edges.', timing: 'Dawn, dusk, and moving tide outfish dead tide.', water: 'saltwater (regulated even in tidal canals)' },
+  { species: 'tarpon', lures: 'Live crabs, threadfin, or large soft swimbaits. Heavy leader and stout tackle for the runs.', timing: 'Warm months, moving water, early morning before boat traffic.', water: 'saltwater, tag required to harvest' },
+  { species: 'redfish', lures: 'Live shrimp or cut bait on a popping cork rig; gold spoons near grass flats.', timing: 'Moving tide, especially the first hour of an incoming tide.', water: 'saltwater' },
+  { species: 'spotted seatrout', lures: 'Live shrimp under a popping cork; soft jerkbaits over grass flats.', timing: 'Early morning, moving water over seagrass.', water: 'saltwater' },
+  { species: 'mangrove snapper', lures: 'Live shrimp or small cut bait fished tight to mangrove roots and docks.', timing: 'Dusk and night bites are strong around structure.', water: 'saltwater' },
+  { species: 'jack crevalle', lures: 'Topwater plugs and fast-retrieved swimbaits; they chase aggressively.', timing: 'Moving tide near passes and inlets.', water: 'saltwater' },
+  { species: 'largemouth bass', lures: 'Texas-rigged worms, spinnerbaits, topwater frogs near cover; live shiners when bite is slow.', timing: 'Early morning and late afternoon, especially around vegetation.', water: 'freshwater' },
+  { species: 'peacock bass', lures: 'Small jerkbaits, jigs, and live shiners. Aggressive strikes on bright colors.', timing: 'Warm, sunny days; they go quiet in cold fronts.', water: 'freshwater, south FL canals' },
+  { species: 'bluegill', lures: 'Small worms, crickets, or tiny jigs under a bobber near docks and grass lines.', timing: 'Mornings, spawning beds in spring.', water: 'freshwater' },
+  { species: 'snakehead', lures: 'Topwater frogs, swimbaits, and live bait near grass and lily pads. Aggressive, will strike hard.', timing: 'Warm weather, shallow vegetated water.', water: 'freshwater, invasive \u2014 encourage harvest, no closed season or size limit' },
+  { species: 'tilapia', lures: 'Bread balls, small jigs, or worms near structure; can be finicky and spook easily.', timing: 'Warm, calm days near shallow flats.', water: 'freshwater' },
+  { species: 'carp', lures: 'Corn, dough bait, or bottom-fished worms on light tackle.', timing: 'Calm mornings and overcast days.', water: 'freshwater' },
+  { species: 'sunshine bass', lures: 'Bucktail jigs and live shiners worked near deeper structure.', timing: 'Cooler months, early morning.', water: 'freshwater, stocked hybrid' },
+  { species: 'black crappie', lures: 'Small jigs or live minnows around brush piles and docks.', timing: 'Cooler months, low light.', water: 'freshwater' },
+  { species: 'channel catfish', lures: 'Cut bait or dough bait fished on bottom.', timing: 'Evening through night.', water: 'freshwater' },
+  { species: 'gar', lures: 'Rope lures or live bait, slow presentation \u2014 they have a tough bony mouth.', timing: 'Warm, calm days near the surface.', water: 'freshwater' },
+  { species: 'mayan cichlid', lures: 'Small jigs or worms near structure.', timing: 'Warm days, south FL canals.', water: 'freshwater, invasive' },
+  { species: 'oscar', lures: 'Small jigs, worms, or pellets near structure.', timing: 'Warm, calm days.', water: 'freshwater, invasive' },
+]
 
-.row { display: flex; gap: 8px; }
-.field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
-.field label { font-size: 12px; color: var(--text-secondary); }
-
-.card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 1rem 1.1rem;
-  margin-bottom: 10px;
-}
-.card.is-favorite { border-color: var(--lime); }
-
-.badge {
-  font-family: var(--font);
-  font-size: 11px;
-  background: var(--cyan);
-  color: #06262a;
-  padding: 3px 9px;
-  border-radius: var(--radius-md);
-  display: inline-block;
-  font-weight: 700;
-}
-.badge.salt { background: var(--coral); color: #2c0a08; }
-
-.tag {
-  font-family: var(--font);
-  font-size: 10px;
-  background: var(--bg-pill);
-  color: var(--purple);
-  padding: 3px 9px;
-  border-radius: var(--radius-md);
-  display: inline-block;
-  border: 1px solid var(--purple);
+export function compressImage(file, maxDim = 1000, quality = 0.8) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      const img = new Image()
+      img.onload = () => {
+        let w = img.width
+        let h = img.height
+        if (w > h && w > maxDim) { h = Math.round(h * (maxDim / w)); w = maxDim }
+        else if (h > maxDim) { w = Math.round(w * (maxDim / h)); h = maxDim }
+        const canvas = document.createElement('canvas')
+        canvas.width = w
+        canvas.height = h
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h)
+        canvas.toBlob((blob) => resolve(blob), 'image/jpeg', quality)
+      }
+      img.onerror = reject
+      img.src = e.target.result
+    }
+    reader.onerror = reject
+    reader.readAsDataURL(file)
+  })
 }
 
-.star { font-size: 17px; cursor: default; }
-.star.interactive { cursor: pointer; }
-.star.filled { color: var(--gold); }
-.star.empty { color: var(--border); }
-
-.metric-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 1rem;
+export function computePersonalBests(catches) {
+  const byKey = {}
+  catches.forEach((c) => {
+    if (!c.size || !c.angler) return
+    const key = c.angler.toLowerCase() + '|' + c.species.toLowerCase().trim()
+    if (!byKey[key] || c.size > byKey[key].size) byKey[key] = c
+  })
+  const ids = {}
+  Object.keys(byKey).forEach((k) => { ids[byKey[k].id] = true })
+  return { byKey, ids }
 }
-.metric-card p:first-child { font-family: var(--font); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); margin: 0 0 6px; }
-.metric-card p:last-child { font-size: 22px; font-weight: 600; margin: 0; color: var(--lime); }
-.metric-card.c1 p:last-child { color: var(--lime); }
-.metric-card.c2 p:last-child { color: var(--cyan); }
-.metric-card.c3 p:last-child { color: var(--coral); }
-.metric-card.c4 p:last-child { color: var(--purple); }
-.metric-card.c5 p:last-child { color: var(--gold); }
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 10px;
-  margin-bottom: 1.5rem;
-}
-
-.muted { color: var(--text-secondary); font-size: 13px; }
-.tiny { color: var(--text-tertiary); font-size: 12px; font-family: var(--font); }
-a { color: var(--cyan); text-decoration: none; }
-a:hover { text-decoration: underline; }
-.empty-state { text-align: center; padding: 2rem 0; color: var(--text-secondary); font-size: 14px; }
-.icon-btn { padding: 6px 8px; border-color: var(--border); color: var(--text-secondary); }
-.icon-btn:hover { color: var(--text-primary); border-color: var(--text-tertiary); }
-
-.angler-group { margin-bottom: 14px; }
-.angler-group-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  background: var(--bg-panel);
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius-md);
-  padding: 10px 14px;
-  cursor: pointer;
-  color: var(--text-primary);
-  text-align: left;
-}
-.angler-group-header:hover { background: var(--bg-card-hover); }
-.angler-group-header .chev { transition: transform 0.15s; color: var(--text-secondary); }
-.angler-group-header.collapsed .chev { transform: rotate(-90deg); }
-.angler-group-name { font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; }
-.angler-group-count { font-family: var(--font); font-size: 11px; color: var(--text-secondary); background: var(--bg-card); padding: 2px 8px; border-radius: 10px; }
-.angler-group-body { padding-top: 10px; }
-
-.footnote { text-align: center; margin-top: 1.5rem; margin-bottom: 0; }
