@@ -13,7 +13,6 @@ const TABS = [
   { id: 'map', label: 'Map' },
   { id: 'timeline', label: 'Timeline' },
   { id: 'stats', label: 'Stats' },
-  { id: 'guide', label: 'Guide' },
   { id: 'add', label: 'Add' },
 ]
 
@@ -40,8 +39,6 @@ function TabIcon({ id }) {
       return <svg {...common}><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 3" /></svg>
     case 'stats':
       return <svg {...common}><path d="M4 20V10M12 20V4M20 20v-7" /></svg>
-    case 'guide':
-      return <svg {...common}><circle cx="12" cy="12" r="9" /><path d="M12 8v.01M11 12h1v5h1" /></svg>
     case 'add':
       return <svg {...common}><path d="M12 5v14M5 12h14" /></svg>
     default:
@@ -100,7 +97,6 @@ function App() {
       {!data.loading && activeTab === 'map' && <MapView data={data} />}
       {!data.loading && activeTab === 'timeline' && <TimelineView data={data} />}
       {!data.loading && activeTab === 'stats' && <StatsView data={data} />}
-      {!data.loading && activeTab === 'guide' && <p className="muted">Guide tab — coming next.</p>}
       {!data.loading && activeTab === 'add' && <p className="muted">Add tab — coming next.</p>}
 
       <p className="tiny footnote">Synced live across every device \u2014 powered by Supabase.</p>
