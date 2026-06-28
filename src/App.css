@@ -175,6 +175,32 @@ a:hover { text-decoration: underline; }
 .icon-btn:hover { color: var(--text-primary); border-color: var(--text-tertiary); }
 
 .angler-group { margin-bottom: 14px; }
+.tl-month {
+  font-family: var(--font);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin: 1.4rem 0 10px;
+}
+.tl-month:first-child { margin-top: 0; }
+.tl-item {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 14px;
+  border-left: 2px solid var(--border);
+}
+.tl-item:last-child { border-left-color: transparent; }
+.tl-dot {
+  position: absolute;
+  left: -5px;
+  top: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyan);
+}
+.tl-dot.salt { background: var(--coral); }
 .angler-group-header {
   display: flex;
   align-items: center;
